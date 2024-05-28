@@ -17,23 +17,15 @@ if gpus:
 #텐서플로우라이브러리에서 구글이 호스팅해주는 데이터 셋 중하나 
 ( (trainX, trainY), (testX, testY) ) = tf.keras.datasets.fashion_mnist.load_data()
 
-# print(trainX[0])
-#.shape: 데이터 갯수
-# print(trainX.shape)
-
-# print(trainY)
-
-# plt.imshow(trainX[0])
-# plt.gray()
-# plt.colorbar()
-# plt.show()
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankleboot']
-
 
 
 # 1. 모델만들기
 model = tf.keras.Sequential([
-    tf.keras.layers.Dense(128, input_shape=(28,28), activation='relu'),
+    
+    
+    tf.keras.layers.Conv2D(32, (3,3)),
+    # tf.keras.layers.Dense(128, input_shape=(28,28), activation='relu'),
     tf.keras.layers.Dense(64, input_shape=(28,28), activation='relu'),
                     # Flatten() : 2D or 3D 데이터를 1차원으로 압축해주는 레이어
     tf.keras.layers.Flatten(),
@@ -46,4 +38,4 @@ model.summary()
 model.compile(loss="sparse_categorical_crossentropy", optimizer="adam", metrics=['accuracy'])
 
 # 3. model.fit 하기 (x와 y데이터를 집어넣어서)
-model.fit(trainX,trainY, epochs=5)
+model.fit(trainX,trainY, epochs=2)
