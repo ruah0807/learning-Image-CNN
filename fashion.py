@@ -31,7 +31,7 @@ model = tf.keras.Sequential([
     
     
     tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu', input_shape=(28,28,1)),
-    # .MaxPooling2D : 사이즈를 줄이고 중요한 정보를 가운데로 모아주는 함수 
+                    # .MaxPooling2D : 사이즈를 줄이고 중요한 정보를 가운데로 모아주는 함수 
     tf.keras.layers.MaxPooling2D((2,2)),
     # tf.keras.layers.Dense(128, input_shape=(28,28), activation='relu'),
                     # Flatten() : 2D or 3D 데이터를 1차원으로 압축해주는 레이어
@@ -46,7 +46,7 @@ model.summary()
 model.compile(loss="sparse_categorical_crossentropy", optimizer="adam", metrics=['accuracy'])
 
 # 3. model.fit 하기 (x와 y데이터를 집어넣어서)
-model.fit(trainX,trainY, validation_data=(textX,testY), epochs=5)
+model.fit(trainX,trainY, validation_data=(textX, testY), epochs=5)
 
 # 4. 모델이 제대로 잘 실행되었는지 평가
 # score = model.evaluate(testX, testY)
