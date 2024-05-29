@@ -1,3 +1,3 @@
 import os
 
-print( len( os.listdir('/train/')))
+print(len(os.listdir('train')))
