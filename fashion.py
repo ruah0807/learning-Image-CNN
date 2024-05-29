@@ -32,11 +32,17 @@ model = tf.keras.Sequential([
     
     tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu', input_shape=(28,28,1)),
                     # .MaxPooling2D : 사이즈를 줄이고 중요한 정보를 가운데로 모아주는 함수 
+    tf.keras.layers.Conv2D(128, (3,3), padding='same', activation='relu', input_shape=(28,28,1)),
     tf.keras.layers.MaxPooling2D((2,2)),
+    
+                    # .MaxPooling2D : 사이즈를 줄이고 중요한 정보를 가운데로 모아주는 함수 
     # tf.keras.layers.Dense(128, input_shape=(28,28), activation='relu'),
                     # Flatten() : 2D or 3D 데이터를 1차원으로 압축해주는 레이어
+    tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape=(28,28,1)),
+                    # .MaxPooling2D : 사이즈를 줄이고 중요한 정보를 가운데로 모아주는 함수 
+    tf.keras.layers.MaxPooling2D((2,2)),
     tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(64, input_shape=(28,28), activation='relu'),
+    
     tf.keras.layers.Dense(10, input_shape=(28,28), activation='softmax'),
 ])
 # 모델 아웃라인 출력
