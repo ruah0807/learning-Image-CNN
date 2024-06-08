@@ -6,7 +6,7 @@ gpus = tf.config.experimental.list_physical_devices('GPU')
 if gpus:
     try:
         for gpu in gpus:
-            tf.config.experimental.set_memory_growth(gpu, True)
+            tf.config.experimental.set_memory_growtpython (gpu, True)
     except RuntimeError as e:
         print(e)
 
@@ -43,9 +43,10 @@ model = tf.keras.Sequential([
 ])
 # 모델 아웃라인 출력
 model.summary()
+optimizer = tf.keras.optimizers.legacy.Adam(learning_rate= 0.001)
 
 # 2. compile 하기
-model.compile(loss="sparse_categorical_crossentropy", optimizer="adam", metrics=['accuracy'])
+model.compile(loss="sparse_categorical_crossentropy", optimizer= optimizer, metrics=['accuracy'])
 
 # 3. model.fit 하기 (x와 y데이터를 집어넣어서)
 model.fit(trainX,trainY, validation_data=(textX, testY), epochs=5)
